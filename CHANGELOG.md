@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 <a name="v3.10.0"></a>
 ## [v3.10.0] - 2020-05-11
 
+- Update source to work for now
+- Changelog
 - Add a backend block to allow terragrunt to use these modules directly
 
 
