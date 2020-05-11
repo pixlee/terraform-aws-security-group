@@ -7,9 +7,16 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v3.11.0"></a>
+## [v3.11.0] - 2020-05-11
+
+- Revert
+
+
 <a name="v3.10.0"></a>
 ## [v3.10.0] - 2020-05-11
 
+- Changelog
 - Update source to work for now
 - Changelog
 - Add a backend block to allow terragrunt to use these modules directly
@@ -422,7 +429,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-security-group/compare/v3.10.0...HEAD
+[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-security-group/compare/v3.11.0...HEAD
+[v3.11.0]: https://github.com/terraform-aws-modules/terraform-aws-security-group/compare/v3.10.0...v3.11.0
 [v3.10.0]: https://github.com/terraform-aws-modules/terraform-aws-security-group/compare/v3.9.0...v3.10.0
 [v3.9.0]: https://github.com/terraform-aws-modules/terraform-aws-security-group/compare/v3.8.0...v3.9.0
 [v3.8.0]: https://github.com/terraform-aws-modules/terraform-aws-security-group/compare/v3.7.0...v3.8.0
