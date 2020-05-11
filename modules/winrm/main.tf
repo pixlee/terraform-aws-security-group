@@ -4,7 +4,7 @@ terraform {
 }
 
 module "sg" {
-  source = "../../"
+  source = "~/pixlee/terraform-aws-security-group/"
 
   create          = var.create
   name            = var.name
