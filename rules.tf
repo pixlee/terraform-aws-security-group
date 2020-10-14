@@ -70,16 +70,22 @@ variable "rules" {
     ipsec-500-udp  = [500, 500, "udp", "IPSEC ISAKMP"]
     ipsec-4500-udp = [4500, 4500, "udp", "IPSEC NAT-T"]
     # Kafka
-    kafka-broker-tcp     = [9092, 9092, "tcp", "Kafka broker 0.8.2+"]
-    kafka-broker-tls-tcp = [9094, 9094, "tcp", "Kafka TLS enabled broker 0.8.2+"]
+    kafka-broker-tcp        = [9092, 9092, "tcp", "Kafka broker 0.8.2+"]
+    kafka-broker-tls-tcp    = [9094, 9094, "tcp", "Kafka TLS enabled broker 0.8.2+"]
+    kafka-jmx-exporter-tcp  = [11001, 11001, "tcp", "Kafka JMX Exporter"]
+    kafka-node-exporter-tcp = [11002, 11002, "tcp", "Kafka Node Exporter"]
     # Kibana
     kibana-tcp = [5601, 5601, "tcp", "Kibana Web Interface"]
     # Kubernetes
     kubernetes-api-tcp = [6443, 6443, "tcp", "Kubernetes API Server"]
     # LDAPS
     ldaps-tcp = [636, 636, "tcp", "LDAPS"]
+    # Logstash
+    logstash-tcp = [5044, 5044, "tcp", "Logstash"]
     # Memcached
     memcached-tcp = [11211, 11211, "tcp", "Memcached"]
+    # MinIO
+    minio-tcp = [9000, 9000, "tcp", "MinIO"]
     # MongoDB
     mongodb-27017-tcp = [27017, 27017, "tcp", "MongoDB"]
     mongodb-27018-tcp = [27018, 27018, "tcp", "MongoDB shard"]
@@ -125,6 +131,8 @@ variable "rules" {
     redis-tcp = [6379, 6379, "tcp", "Redis"]
     # Redshift
     redshift-tcp = [5439, 5439, "tcp", "Redshift"]
+    # Solr
+    solr-tcp = [8983, 8987, "tcp", "Solr"]
     # Splunk
     splunk-indexer-tcp = [9997, 9997, "tcp", "Splunk indexer"]
     splunk-web-tcp     = [8000, 8000, "tcp", "Splunk Web"]
@@ -247,7 +255,7 @@ variable "auto_groups" {
       egress_rules      = ["all-all"]
     }
     kafka = {
-      ingress_rules     = ["kafka-broker-tcp", "kafka-broker-tls-tcp"]
+      ingress_rules     = ["kafka-broker-tcp", "kafka-broker-tls-tcp", "kafka-jmx-exporter-tcp", "kafka-node-exporter-tcp"]
       ingress_with_self = ["all-all"]
       egress_rules      = ["all-all"]
     }
@@ -266,8 +274,18 @@ variable "auto_groups" {
       ingress_with_self = ["all-all"]
       egress_rules      = ["all-all"]
     }
+    logstash = {
+      ingress_rules     = ["logstash-tcp"]
+      ingress_with_self = ["all-all"]
+      egress_rules      = ["all-all"]
+    }
     memcached = {
       ingress_rules     = ["memcached-tcp"]
+      ingress_with_self = ["all-all"]
+      egress_rules      = ["all-all"]
+    }
+    minio = {
+      ingress_rules     = ["minio-tcp"]
       ingress_with_self = ["all-all"]
       egress_rules      = ["all-all"]
     }
@@ -343,6 +361,11 @@ variable "auto_groups" {
     }
     redshift = {
       ingress_rules     = ["redshift-tcp"]
+      ingress_with_self = ["all-all"]
+      egress_rules      = ["all-all"]
+    }
+    solr = {
+      ingress_rules     = ["solr-tcp"]
       ingress_with_self = ["all-all"]
       egress_rules      = ["all-all"]
     }
